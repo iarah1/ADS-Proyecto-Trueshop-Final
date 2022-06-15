@@ -10,19 +10,46 @@ $(document).ready(function () {
             "datatype": "json"
         },
         "columns": [
-            { "data": "IdPedido" },
-            { "data": "Cliente" },
-            { "data": "Direccion" },
-            { "data": "Email" },
-            { "data": "Telefono" },
-            { "data": "TotalOrden" },
-            { "data": "FechaCreacion" },
-            { "data": "PickerName" },
-            { "data": "Estado" },
+            {
+                "data": "IdPedido",
+                "width":"auto"
+            },
+            {
+                "data": "Cliente",
+                "width": "auto"
+            },
+            {
+                "data": "Direccion",
+                "width": "auto"
+            },
+            {
+                "data": "Email",
+                "width": "auto"
+            },
+            {
+                "data": "Telefono",
+                "width": "auto"
+            },
+            {
+                "data": "TotalOrden",
+                "width": "auto"
+            },
+            {
+                "data": "FechaCreacion",
+                "width": "auto"
+            },
+            {
+                "data": "PickerName",
+                "width": "auto"
+            },
+            {
+                "data": "Estado",
+                "width": "auto"
+            },
             {
                 "data": "IdPedido", "render": function (data) {
                     return "<button type='button' class='btn btn-secondary btn-sm mr-1' data-toggle='tooltip' title='Detalles' onclick='openModal(" + data + ")'><i class='fa fa-eye'></i></button>" +
-                           "<button type='button' class='btn btn-success btn-sm' data-toggle='tooltip' title='Facturar' onclick='Facturar(" + data + ")'><i class='fa fa-boxes-packing'></i></button>"
+                        "<button type='button' class='btn btn-success btn-sm' data-toggle='tooltip' title='Facturar' onclick='Facturar(" + data + ")'><i class='fa fa-receipt'></i></button>"
                 },
             }
         ],
@@ -214,6 +241,7 @@ function CrearFactura() {
                 var modal = document.getElementById("ModalFacturar");
                 $(modal).modal('hide');
                 //alert("Registro Guardado Existosamente.");
+                swal("¡Exitoso!", "¡Pedido Facturado!", "success");
             } else {
                 alert("No se pudo guardar el registro...");
             }

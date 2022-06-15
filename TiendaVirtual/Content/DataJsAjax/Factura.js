@@ -23,7 +23,7 @@ $(document).ready(function () {
             {
                 "data": "PedidoId", "render": function (data) {
                     return "<button type='button' class='btn btn-secondary btn-sm mr-1' data-toggle='tooltip' title='Detalles' onclick='openModal(" + data + ")'><i class='fa fa-eye'></i></button>" +
-                        "<button type='button' class='btn btn-success btn-sm' data-toggle='tooltip' title='Facturar' onclick='Facturar(" + data + ")'><i class='fa fa-boxes-packing'></i></button>"
+                        "<button type='button' class='btn btn-success btn-sm' data-toggle='tooltip' title='Facturar' onclick='openAlert()'><i class='fa fa-print'></i></button>"
                 },
             }
         ],
@@ -114,9 +114,25 @@ function LoadPedidoProductos(PedidoId) {
 }
 
 function openAlert() {
-    //ocultar modal
-    var modal = document.getElementById("ModalViewFacturar");
-    $(modal).modal('hide');
-    alert("Imprimiendo factura");
-    
+    //alert("Imprimiendo factura");
+    swal({
+        title: "¿Desea Imprimir Factura?",
+        text: "¡La factura contiene datos personales del cliente!",
+        icon: "info",
+        buttons: true,
+        dangerMode: true,
+    })
+        .then((willDelete) => {
+            if (willDelete) {
+                swal("Factura enviada a la impresora...", {
+                    icon: "success",
+                });
+                //ocultar modal
+                var modal = document.getElementById("ModalViewFacturar");
+                $(modal).modal('hide');
+            } else {
+                //swal("Your imaginary file is safe!");
+            }
+        });
+   
 }
